@@ -1,0 +1,53 @@
+{
+  "restaurantes": [
+    {
+      "id": "1",
+      "nombre": "Restaurante El Buen Sabor",
+      "tipo": "Tradicional",
+      "horario": "12:00 - 22:00",
+      "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/07/mote-con-chicharron-shutterstock_1143555335.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "Café del Valle",
+      "tipo": "Cafetería",
+      "horario": "08:00 - 20:00",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJJ1p95DdSuXJZG0-hio8Wm3_BMhln32bSg&s"
+    },
+    {
+      "id": "3",
+      "nombre": "La Parrilla de San José",
+      "tipo": "Parrillada",
+      "horario": "12:00 - 23:00",
+      "imagen": "https://sabor.eluniverso.com/wp-content/uploads/2023/11/shutterstock_272736824.jpg"
+    },
+    {
+      "id": "4",
+      "nombre": "Tortillas tradicionales",
+      "tipo": "Tradicinal",
+      "horario": "13:00 - 21:00",
+      "imagen": "https://i.ytimg.com/vi/M929fP2ZKXo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDDi0jIts2m91TzvVOs7hDwbiLJmA"
+    },
+    {
+      "id": "5",
+      "nombre": "Chao Pescao",
+      "tipo": "Mariscos",
+      "horario": "13:00 - 20:00",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpmy21qCggE-LqimRSfspw7MvR6Me5iA8YSw&s"
+    },
+    {
+      "id": 6,
+      "nombre": "Casa Warmi",
+      "tipo": "Comida tipica",
+      "horario": "09:00 - 22:00",
+      "imagen": "https://lh3.googleusercontent.com/p/AF1QipMwJIoH0fWYxHVYiWbq1Dso8DQd22Yoaxlw8dT4=s680-w680-h510"
+    },
+    {
+      "id": 7,
+      "nombre": "Rincon Manaba",
+      "tipo": "Mariscos",
+      "horario": "13:00 - 20:00",
+      "imagen": "xd"
+    }
+  ]
+}
