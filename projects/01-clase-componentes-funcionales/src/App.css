@@ -3,9 +3,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 10vh;
+  padding: 0;
 }
-.restaurantes-container{
+
+.restaurantes-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,21 +14,28 @@
   padding: 5px
 }
 
-.restaurant-item{
+.restaurant-item {
   width: 40vw;
   border: solid;
   margin: 10px;
   border-width: 2px;
   border-radius: 20px;
-  
+
 }
 
-.restaurant-item img{
+.restaurant-item img {
   height: 100px;
   width: auto;
   margin-top: 20px;
 }
 
-.nuevo-restaurante{
+.nuevo-restaurante {
   margin: 30px;
+}
+
+.btn-rest-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

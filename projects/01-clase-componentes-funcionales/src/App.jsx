@@ -1,20 +1,32 @@
 //import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { ItemNuevoRestaurante } from "./components/ItemNuevoRestaurante";
-import ListaRestaurantes from "./components/ListaRestaurantes";
+import { ListaRestaurantes } from "./components/ListaRestaurantes";
+import { EditarRestaurante } from "./components/EditarRestaurante";
+import { NavBar } from "./components/NavBar";
+import { DetalleRestaurante } from "./components/DetalleRestaurante";
 
 function App() {
   //const [restaurantes, setRestaurantes] = useState(listaRestaurantes);
   const [restaurantes, setRestaurantes] = useState([]);
 
   const agregarRestaurante = (nuevoRestaurante) => {
-    setRestaurantes( (prevRestaurantes) =>  
-      [...prevRestaurantes, nuevoRestaurante]
-    )
-  }
+    setRestaurantes((prevRestaurantes) => [
+      ...prevRestaurantes,
+      nuevoRestaurante,
+    ]);
+  };
+
+  const editarRestaurante = (id, restauranteEditado) => {
+    setRestaurantes((prevRestaurantes) =>
+      prevRestaurantes.map((restaurante) =>
+        restaurante.id === id ? { ...restaurante, ...restauranteEditado } : restaurante
+      )
+    );
+  };
 
   useEffect(() => {
     axios
@@ -28,7 +40,7 @@ function App() {
       });
   }, []);
 
-/*
+  /*
   const insertarNuevo = () => {
     setRestaurantes((prevRestaurantes) => [
       ...prevRestaurantes,
@@ -58,21 +70,47 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Bienvenidos a ÑamEC</h1>
-{/*}
+      <BrowserRouter>
+        <NavBar />
+        <h1>Bienvenidos a ÑamEC</h1>
+
+        <Routes>
+          <Route
+            path={"/"}
+            element={<Navigate to="/home" replace />}
+          />
+          <Route
+            path={"/home"}
+            element={<ListaRestaurantes restaurantes={restaurantes} />}
+          />
+          <Route
+            path={"/agregar"}
+            element={
+              <ItemNuevoRestaurante onAgregarRestaurante={agregarRestaurante} />
+            }
+          />
+          <Route path={"/restaurante/:id"} element={<DetalleRestaurante />} />
+
+          <Route
+            path={"/editar/:id"}
+            element={
+              <EditarRestaurante onEditarRestaurante={editarRestaurante} />
+            }
+          />
+        </Routes>
+
+        {/*}
       <div>
         <button onClick={cargarRestaurantes}>cargar</button>
       </div>
 {*/}
-     <ListaRestaurantes restaurantes={restaurantes}/>
 
-{/*} 
+        {/*} 
       <div>
         <button onClick={insertarNuevo}>Insertar Nuevo</button>
       </div>
 {*/}
-      <ItemNuevoRestaurante onAgregarRestaurante={agregarRestaurante}/>     
-
+      </BrowserRouter>
     </div>
   );
 }
