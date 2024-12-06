@@ -1,16 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { Margin } from "@mui/icons-material";
 
-/*
-Forma de desestructuracion 1
-function ItemRestaurante(props) {
-
-  const {name, type, hour, img} = props;
-*/
-
-/*Forma de desestructuracion 2*/
 function ItemRestaurante({ restaurante }) {
   return (
     <div className="restaurant-item">

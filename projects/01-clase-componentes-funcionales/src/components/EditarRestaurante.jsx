@@ -46,12 +46,11 @@ export function EditarRestaurante({ onEditarRestaurante }) {
       );
       alert("Restaurante editado exitosamente");
 
-      // Actualiza el estado del padre solo después de que el servidor responda exitosamente
       if (onEditarRestaurante) {
         onEditarRestaurante(id, nuevoRestaurante);
       }
 
-      navigate("/home"); // Redirige al usuario al listado de restaurantes
+      navigate("/restaurante/"+id); 
     } catch (err) {
       console.error("Error al editar restaurante:", err);
       alert("Ocurrió un error. Intenta nuevamente.");

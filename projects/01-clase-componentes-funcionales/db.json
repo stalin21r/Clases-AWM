@@ -1,13 +1,6 @@
 {
   "restaurantes": [
     {
-      "id": "1",
-      "nombre": "Restaurante El Buen Sabor",
-      "tipo": "Tradicional",
-      "horario": "12:00 - 22:00",
-      "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/07/mote-con-chicharron-shutterstock_1143555335.jpg"
-    },
-    {
       "id": "2",
       "nombre": "Café del Valle",
       "tipo": "Cafetería",
@@ -36,9 +29,9 @@
       "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpmy21qCggE-LqimRSfspw7MvR6Me5iA8YSw&s"
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Kuntur",
-      "tipo": "tradicional",
+      "tipo": "Tradicional",
       "horario": "10:00am - 10:00pm",
       "imagen": "https://kunturkwa.com/wp-content/uploads/2024/06/fotos_kuntur_8.jpg"
     }
