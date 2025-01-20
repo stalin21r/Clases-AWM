@@ -15,17 +15,14 @@ export function EditarRestaurante({ onEditarRestaurante }) {
   });
 
   useEffect(() => {
-    const fetchRestaurante = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/restaurantes/${id}`
-        );
-        setNuevoRestaurante(response.data);
-      } catch (err) {
-        alert("Error al cargar los datos del restaurante.");
-      }
-    };
-    fetchRestaurante();
+
+    axios.get(`http://localhost:3000/restaurantes/${id}`)
+    .then((response) => {
+      setNuevoRestaurante(response.data)
+    })
+    .catch((err) => {
+      alert("Error al cargar los datos del restaurante.");
+    })
   }, [id]);
 
   const handleChangeRestaurante = (e) => {

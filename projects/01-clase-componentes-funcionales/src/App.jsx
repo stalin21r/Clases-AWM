@@ -15,7 +15,8 @@ function App() {
     axios
       .get("http://localhost:3000/restaurantes")
       .then((response) => {
-        setRestaurantes(response.data);
+        console.log(response.data.restaurantes);
+        setRestaurantes(response.data.restaurantes);
       })
       .catch((err) => {
         console.error("Error al conectar con la base de datos:", err);
