@@ -1,21 +1,26 @@
-// ListaRestaurantes.js
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-export function ListaRestaurantes({ restaurantes }) {
+const ListaRestaurantes = ({ restaurantes, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       {restaurantes.map((restaurante) => (
-        <View style={styles.item} key={restaurante._id}>
+        <TouchableOpacity
+          key={restaurante._id}
+          style={styles.item}
+          onPress={() =>
+            navigation.navigate('DetalleRestaurante', { id: restaurante._id })
+          }
+        >
           <Image source={{ uri: restaurante.imagen }} style={styles.image} />
           <Text style={styles.name}>{restaurante.nombre}</Text>
           <Text style={styles.type}>Tipo de comida: {restaurante.tipo}</Text>
           <Text style={styles.schedule}>Horario: {restaurante.horario}</Text>
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -53,3 +58,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+
+export default ListaRestaurantes;

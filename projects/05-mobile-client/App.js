@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import ListaRestaurantes from './components/ListaRestaurantes';
+import DetalleRestaurante from './components/DetalleRestaurante';
+import EditarRestaurante from './components/EditarRestaurante';
 import axios from 'axios';
-import { ListaRestaurantes } from './components/ListaRestaurantes';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   const [restaurantes, setRestaurantes] = useState([]);
 
   const cargarRestaurantes = () => {
     axios
-      .get("http://172.29.46.141:3000/restaurantes")
-      .then((response) => {
-        setRestaurantes(response.data.restaurantes);
-      })
+      .get('http://172.29.21.122:3000/restaurantes')
+      .then((response) => setRestaurantes(response.data.restaurantes))
       .catch((err) => {
-        console.error("Error al conectar con la base de datos:", err);
-        alert("Error al conectar con la base de datos");
+        console.error('Error al conectar con la base de datos:', err);
+        alert('Error al conectar con la base de datos');
       });
   };
 
@@ -25,12 +29,35 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Ñam EC</Text>
-        
-        <ListaRestaurantes restaurantes={restaurantes} />
-
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="ListaRestaurantes">
+            {(props) => (
+              <ListaRestaurantes
+                {...props}
+                restaurantes={restaurantes}
+                onActualizarLista={cargarRestaurantes}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="DetalleRestaurante">
+            {(props) => (
+              <DetalleRestaurante
+                {...props}
+                onActualizarLista={cargarRestaurantes}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="EditarRestaurante">
+            {(props) => (
+              <EditarRestaurante
+                {...props}
+                onActualizarLista={cargarRestaurantes}
+              />
+            )}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };
@@ -41,18 +68,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
     backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  item: {
-    fontSize: 18,
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
   },
 });
 
